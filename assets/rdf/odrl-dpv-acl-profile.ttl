@@ -1,0 +1,9 @@
+acl:Access rdfs:subClassOf odrl:Action .
+
+dpv:Processing rdfs:subClassOf odrl:Action .
+
+dpv:PersonalDataCategory rdfs:subClassOf odrl:Asset .
+
+dpv:Purpose rdfs:subClassOf odrl:purpose .
+
+dpv:Recipient rdfs:subClassOf odrl:recipient .
