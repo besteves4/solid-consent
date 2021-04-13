@@ -1,0 +1,25 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix dpv: <http://www.w3.org/ns/dpv#> .
+@prefix acl:  <http://www.w3.org/ns/auth/acl#> .
+@prefix odrl-ac: <https://example.com/odrl-ac> .
+
+:ex-1
+    rdf:type odrl:Policy ;
+    odrl:permission [
+        rdf:type odrl:Permission ;
+        odrl:assigner <https://beatriz.com/profile/card#me> ;
+        odrl:target dpv:Contact, dpv:EmailAddress ;
+        odrl:action acl:Read, acl:Write ;
+        odrl:constraint [
+            odrl:leftOperand dpv:Purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:RegistrationAuthentication
+        ] ;
+        odrl:constraint [
+            odrl:leftOperand dpv:Recipient ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:ThirdParty
+        ] 
+    ] .

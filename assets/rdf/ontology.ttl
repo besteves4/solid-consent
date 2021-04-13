@@ -1,0 +1,1462 @@
+@prefix : <https://protect.oeg.fi.upm.es/def/gdprif#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://protect.oeg.fi.upm.es/def/gdprif> .
+
+<https://protect.oeg.fi.upm.es/def/gdprif> rdf:type owl:Ontology ;
+                                            <http://purl.org/dc/terms/creator> "Beatriz Esteves" ,
+                                                                               "VÃ­ctor RodrÃ­guez Doncel" ;
+                                            <http://purl.org/dc/terms/issued> "2021-01-29"^^xsd:date ;
+                                            <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                                            <http://purl.org/dc/terms/title> "GDPR Information flows"@en ;
+                                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "gdprif:" ;
+                                            owl:versionInfo "1.0.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/action
+<http://www.w3.org/ns/odrl/2/action> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/attributedParty
+<http://www.w3.org/ns/odrl/2/attributedParty> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/attributingParty
+<http://www.w3.org/ns/odrl/2/attributingParty> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/consequence
+<http://www.w3.org/ns/odrl/2/consequence> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/constraint
+<http://www.w3.org/ns/odrl/2/constraint> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/contractedParty
+<http://www.w3.org/ns/odrl/2/contractedParty> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/contractingParty
+<http://www.w3.org/ns/odrl/2/contractingParty> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/leftOperand
+<http://www.w3.org/ns/odrl/2/leftOperand> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/obligation
+<http://www.w3.org/ns/odrl/2/obligation> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/operator
+<http://www.w3.org/ns/odrl/2/operator> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/permission
+<http://www.w3.org/ns/odrl/2/permission> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/refinement
+<http://www.w3.org/ns/odrl/2/refinement> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/rightOperand
+<http://www.w3.org/ns/odrl/2/rightOperand> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/target
+<http://www.w3.org/ns/odrl/2/target> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/ns/odrl/2/informedParty
+<http://www.w3.org/ns/odrl/2/informedParty> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/odrl/2/informingParty
+<http://www.w3.org/ns/odrl/2/informingParty> rdf:type owl:ObjectProperty .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#isAnsweredBy
+:isAnsweredBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/informedParty> ;
+              rdfs:comment "Specifies the entity that answers to the right or obligation"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#isRequestedBy
+:isRequestedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/informingParty> ;
+               rdfs:comment "Specifies the entity that requests the right or obligation"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#isTriggeredBy
+:isTriggeredBy rdf:type owl:ObjectProperty ;
+               rdfs:comment "Specifies the trigger event that determins the invoking of a right or obligation"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#requires
+:requires rdf:type owl:ObjectProperty ;
+          rdfs:comment "Specifies the informational items that need to be transmitted to comply with a certain right or obligation"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#DataController
+<http://www.w3.org/ns/dpv#DataController> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#DataProcessor
+<http://www.w3.org/ns/dpv#DataProcessor> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#DataProtectionAuthority
+<http://www.w3.org/ns/dpv#DataProtectionAuthority> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#DataProtectionOfficer
+<http://www.w3.org/ns/dpv#DataProtectionOfficer> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#DataSubject
+<http://www.w3.org/ns/dpv#DataSubject> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#Recipient
+<http://www.w3.org/ns/dpv#Recipient> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dpv#dpv:DataProcessor
+<http://www.w3.org/ns/dpv#dpv:DataProcessor> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Constraint
+<http://www.w3.org/ns/odrl/2/Constraint> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Obligation
+<http://www.w3.org/ns/odrl/2/Obligation> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Party
+<http://www.w3.org/ns/odrl/2/Party> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Permission
+<http://www.w3.org/ns/odrl/2/Permission> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Policy
+<http://www.w3.org/ns/odrl/2/Policy> rdf:type owl:Class .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#CDB
+:CDB rdf:type owl:Class ;
+     rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#CPr
+:CPr rdf:type owl:Class ;
+     rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ControllerProcessorObligation
+:ControllerProcessorObligation rdf:type owl:Class .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DPIA
+:DPIA rdf:type owl:Class ;
+      rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataController
+:DataController rdf:type owl:Class ;
+                rdfs:subClassOf :Stakeholder ;
+                rdfs:label "Data Controller"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataProcessor
+:DataProcessor rdf:type owl:Class ;
+               rdfs:subClassOf :Stakeholder ;
+               rdfs:label "Data Processor"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataProtectionOfficer
+:DataProtectionOfficer rdf:type owl:Class ;
+                       rdfs:subClassOf :Stakeholder ;
+                       rdfs:label "Data Protection Officer"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataSubject
+:DataSubject rdf:type owl:Class ;
+             rdfs:subClassOf :Stakeholder ;
+             rdfs:label "Data Subject"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataSubjectRight
+:DataSubjectRight rdf:type owl:Class .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#InformationalItem
+:InformationalItem rdf:type owl:Class .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#JC
+:JC rdf:type owl:Class ;
+    rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#NDB
+:NDB rdf:type owl:Class ;
+     rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#PC
+:PC rdf:type owl:Class ;
+    rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RA
+:RA rdf:type owl:Class ;
+    rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RDM
+:RDM rdf:type owl:Class ;
+     rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RDP
+:RDP rdf:type owl:Class ;
+     rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RE
+:RE rdf:type owl:Class ;
+    rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RI1
+:RI1 rdf:type owl:Class ;
+     rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RI2
+:RI2 rdf:type owl:Class ;
+     rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RN
+:RN rdf:type owl:Class ;
+    rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RO
+:RO rdf:type owl:Class ;
+    rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ROPA-DC
+:ROPA-DC rdf:type owl:Class ;
+         rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ROPA-DP
+:ROPA-DP rdf:type owl:Class ;
+         rdfs:subClassOf :ControllerProcessorObligation .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RR
+:RR rdf:type owl:Class ;
+    rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RRP
+:RRP rdf:type owl:Class ;
+     rdfs:subClassOf :DataSubjectRight .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#Recipient
+:Recipient rdf:type owl:Class ;
+           rdfs:subClassOf :Stakeholder ;
+           rdfs:label "Recipient"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#Stakeholder
+:Stakeholder rdf:type owl:Class .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#SupervisoryAuthority
+:SupervisoryAuthority rdf:type owl:Class ;
+                      rdfs:subClassOf :Stakeholder ;
+                      rdfs:label "Supervisory Authority"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#TriggerEvent
+:TriggerEvent rdf:type owl:Class .
+
+
+###  https://w3id.org/GDPRtEXT#JointController
+<https://w3id.org/GDPRtEXT#JointController> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#CDB
+:CDB rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#CPr
+:CPr rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ComplianceMonitoring
+:ComplianceMonitoring rdf:type owl:NamedIndividual ,
+                               :TriggerEvent ;
+                      rdfs:comment "Supervisory authority checks the records od data controllers and processors for compliance monitoring."@en ;
+                      rdfs:label "Compliance Monitoring"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ContractBetweenControllerProcessor
+:ContractBetweenControllerProcessor rdf:type owl:NamedIndividual ,
+                                             :TriggerEvent ;
+                                    rdfs:comment "Controller and processor establish a contract for the processing of personal data of the data subject."@en ;
+                                    rdfs:label "Contract Between Controller and Processor"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ContractBetweenJointControllers
+:ContractBetweenJointControllers rdf:type owl:NamedIndividual ,
+                                          :TriggerEvent ;
+                                 rdfs:comment "Joint controllers establish a contract for the processing of personal data of the data subject."@en ;
+                                 rdfs:label "Contract between Joint Controllers"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ControllerProcessorObligation
+:ControllerProcessorObligation rdf:type owl:NamedIndividual ,
+                                        <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DPIA
+:DPIA rdf:type owl:NamedIndividual ,
+               <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#DataSubjectRight
+:DataSubjectRight rdf:type owl:NamedIndividual ,
+                           <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#HighRiskDPIA
+:HighRiskDPIA rdf:type owl:NamedIndividual ,
+                       :TriggerEvent ;
+              rdfs:comment "The Data Protection Impact Assessment indicates a high risk to the privacy of the data subjects involved."@en ;
+              rdfs:label "High Risk DPIA"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I1
+:I1 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Controller Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I10
+:I10 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Transfers to Third Countries"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I11
+:I11 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Retention Period"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I12
+:I12 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Data Subject Rights"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I13
+:I13 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Right to Withdraw Consent"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I14
+:I14 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Right to Lodge a Complaint"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I15
+:I15 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Statutory or Contractual Obligation Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I16
+:I16 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Existence of Automated Decision Making"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I17
+:I17 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Personal Data Categories"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I18
+:I18 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Personal Data Source"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I19
+:I19 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Not Comply with Information Right"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I2
+:I2 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Controller Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I20
+:I20 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Safeguards related to the Transfer to a Third Country"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I21
+:I21 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Copy of Personal Data"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I22
+:I22 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Request to Complete Incomplete Personal Data"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I23
+:I23 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Request Erasure of Data"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I24
+:I24 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Technical Measures taken to Erase Data"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I25
+:I25 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Recipient Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I26
+:I26 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Not Comply with Right of Erasure"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I27
+:I27 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Request Restriction of Processing"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I28
+:I28 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Transfer Data Directly between Controllers"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I29
+:I29 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Not Comply with Right to Object"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I3
+:I3 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Controller Representative Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I30
+:I30 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Grounds to Not Comply with Right Not to be Subject to Decision Making"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I31
+:I31 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Joint Controller Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I32
+:I32 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Joint Controller Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I33
+:I33 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Responsabilities of Joint Controllers"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I34
+:I34 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Subject-matter of the Processing"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I35
+:I35 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processing Duration"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I36
+:I36 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processing Categories"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I37
+:I37 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Data Subject Categories"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I38
+:I38 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Controller Obligations"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I39
+:I39 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processor Obligations"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I4
+:I4 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Controller Representative Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I40
+:I40 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "DPO Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I41
+:I41 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Technical and Organizational Security Measures"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I42
+:I42 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processor Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I43
+:I43 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processor Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I44
+:I44 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processor Representative Identity"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I45
+:I45 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Processor Representative Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I46
+:I46 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Nature of Data Breach"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I47
+:I47 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Approximate Number of Data Subjects"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I48
+:I48 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Approximate Number of Personal Data Records"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I49
+:I49 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Consequences of Personal Data  Breach"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I5
+:I5 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "DPO Contact Details"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I50
+:I50 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Measures to Address and Mitigate Effects of Data Breach"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I51
+:I51 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Systematic Description of Processing Operations"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I52
+:I52 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Assessment of the Necessity and Proportionality of the Processing Operations"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I53
+:I53 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Assessment of the Risks to the Rights and Freedoms of Data Sujects"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I54
+:I54 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Responsabilities of the Controller"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I55
+:I55 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Responsabilities of the Processor"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I56
+:I56 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Means of Processing"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I57
+:I57 rdf:type owl:NamedIndividual ,
+              :InformationalItem ;
+     rdfs:label "Data Protection Impact Assessment"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I6
+:I6 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Purposes"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I7
+:I7 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Legal Basis"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I8
+:I8 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Legitimate Interests"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#I9
+:I9 rdf:type owl:NamedIndividual ,
+             :InformationalItem ;
+    rdfs:label "Recipients"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#InformationalItem
+:InformationalItem rdf:type owl:NamedIndividual ,
+                            <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#JC
+:JC rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#LargeScaleProcessingOfSensitivePersonalData
+:LargeScaleProcessingOfSensitivePersonalData rdf:type owl:NamedIndividual ,
+                                                      :TriggerEvent ;
+                                             rdfs:comment "Processing of sensitive personal data (Article 9) and criminal data (Article 10) on large scale."@en ;
+                                             rdfs:label "Large Scale Processing of Sensitive Personal Data"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#NDB
+:NDB rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#PC
+:PC rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#PersonalDataBreach
+:PersonalDataBreach rdf:type owl:NamedIndividual ,
+                             :TriggerEvent ;
+                    rdfs:comment "Non authorized disclosure of personal data which may put in risk the privacy and rights of the data subject regarding its personal data."@en ;
+                    rdfs:label "Personal Data Breach"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RA
+:RA rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RDM
+:RDM rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RDP
+:RDP rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RE
+:RE rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RI1
+:RI1 rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RI2
+:RI2 rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RN
+:RN rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RO
+:RO rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ROPA-DC
+:ROPA-DC rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#ROPA-DP
+:ROPA-DP rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RR
+:RR rdf:type owl:NamedIndividual ,
+             <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#RRP
+:RRP rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/ns/odrl/2/Policy> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#Stakeholder
+:Stakeholder rdf:type owl:NamedIndividual ,
+                      <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#SystematicAndExtensiveAutomatedProcessing
+:SystematicAndExtensiveAutomatedProcessing rdf:type owl:NamedIndividual ,
+                                                    :TriggerEvent ;
+                                           rdfs:comment "Processing activities which rely on systematic and extensive automated decisions."@en ;
+                                           rdfs:label "Systematic and Extensive Automated Processing"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#SystematicMonitoringOfPublicAreas
+:SystematicMonitoringOfPublicAreas rdf:type owl:NamedIndividual ,
+                                            :TriggerEvent ;
+                                   rdfs:comment "Systematic monitoring of public areas on large scale."@en ;
+                                   rdfs:label "Systematic Monitoring of Public Areas"@en .
+
+
+###  https://protect.oeg.fi.upm.es/def/gdprif#TriggerEvent
+:TriggerEvent rdf:type owl:NamedIndividual ,
+                       <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:CDB rdfs:comment "Data controller must inform the data subject that a personal data breach occurred." ;
+     rdfs:label "Communication of a Data Breach to the Data Subject" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#NotifyDataSubjectOfBreach> ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid1 .
+
+_:genid1 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+          <http://www.w3.org/ns/odrl/2/informedParty> _:genid2 ;
+          <http://www.w3.org/ns/odrl/2/informingParty> _:genid3 ;
+          <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+          <http://www.w3.org/ns/odrl/2/constraint> _:genid4 ;
+          <http://www.w3.org/ns/odrl/2/target> :I40 ,
+                                               :I46 ,
+                                               :I49 ,
+                                               :I5 ,
+                                               :I50 .
+
+_:genid2 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                   <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid3 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                   <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid4 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+          <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+          <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+          <http://www.w3.org/ns/odrl/2/rightOperand> :PersonalDataBreach .
+
+
+:CPr rdfs:comment "Data controller has the permission to establish a contract with processors for the latter to carry out the processing of the personal data on behalf of them. Sub-processors can only be hired with the authorization of the controller and their obligations are the same as the ones established in the contract between controller and processor." ;
+     rdfs:label "Contract with Processors" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#AppointmentOfProcessors> ;
+     <http://www.w3.org/ns/odrl/2/permission> _:genid5 .
+
+_:genid5 rdf:type <http://www.w3.org/ns/odrl/2/Permission> ;
+          <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/grantUse> ;
+          <http://www.w3.org/ns/odrl/2/constraint> _:genid6 ;
+          <http://www.w3.org/ns/odrl/2/contractedParty> _:genid7 ;
+          <http://www.w3.org/ns/odrl/2/contractingParty> _:genid8 ;
+          <http://www.w3.org/ns/odrl/2/target> :I12 ,
+                                               :I17 ,
+                                               :I34 ,
+                                               :I35 ,
+                                               :I36 ,
+                                               :I37 ,
+                                               :I38 ,
+                                               :I39 ,
+                                               :I6 .
+
+_:genid6 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+          <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+          <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+          <http://www.w3.org/ns/odrl/2/rightOperand> :ContractBetweenControllerProcessor .
+
+_:genid7 rdf:type <http://www.w3.org/ns/dpv#DataProcessor> ,
+                   <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid8 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                   <http://www.w3.org/ns/odrl/2/Party> .
+
+
+:ControllerProcessorObligation rdfs:label "Controller and Processor Obligation"@en .
+
+
+:DPIA rdfs:comment "Data controller has to draft a DPIA with the guidance of the data protection officer when doing automated evaluation of personal data, processing of sensitive categories of personal data or systematic monitoring of public areas." ;
+      rdfs:label "Data Protection Impact Assessment" ;
+      rdfs:seeAlso <https://w3id.org/GDPRtEXT#FactorsForImpactAssessment> ;
+      <http://www.w3.org/ns/odrl/2/obligation> _:genid9 .
+
+_:genid9 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+          <http://www.w3.org/ns/odrl/2/informedParty> _:genid10 ;
+          <http://www.w3.org/ns/odrl/2/informingParty> _:genid11 ;
+          <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ,
+                                               <http://www.w3.org/ns/odrl/2/modify> ;
+          <http://www.w3.org/ns/odrl/2/constraint> _:genid12 ;
+          <http://www.w3.org/ns/odrl/2/target> :I41 ,
+                                               :I51 ,
+                                               :I52 ,
+                                               :I53 ,
+                                               :I6 ,
+                                               :I8 .
+
+_:genid10 rdf:type <http://www.w3.org/ns/dpv#DataProtectionOfficer> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid11 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid12 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/isAnyOf> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> [ ] .
+
+
+:DataSubjectRight rdfs:label "Data Subject Right"@en .
+
+
+:InformationalItem rdfs:label "Informational Item"@en .
+
+
+:JC rdfs:comment "Joint controllers have the obligation to inform the data subject about their responsabilities related to the processing of the data subject's personal data, including the responsabilities of each controller regarding the data subject's rights." ;
+    rdfs:label "Joint Controllers Responsabilities" ;
+    rdfs:seeAlso <https://w3id.org/GDPRtEXT#LiabilityOfJointController> ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid14 .
+
+_:genid14 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           <http://www.w3.org/ns/odrl/2/informedParty> _:genid15 ;
+           <http://www.w3.org/ns/odrl/2/informingParty> _:genid16 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid17 ;
+           <http://www.w3.org/ns/odrl/2/target> :I31 ,
+                                                :I32 ,
+                                                :I33 .
+
+_:genid15 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid16 rdf:type <http://www.w3.org/ns/odrl/2/Party> ,
+                    <https://w3id.org/GDPRtEXT#JointController> .
+
+_:genid17 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> :ContractBetweenJointControllers .
+
+
+:NDB rdfs:comment "Data controller has to report a personal data breach to the supervisory authority and in the case it happens to the data processor it should be reported to the data controller." ;
+     rdfs:label "Notification of a Data Breach to the Supervisory Authority" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#ReportDataBreach> ;
+     <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+     <http://www.w3.org/ns/odrl/2/constraint> _:genid18 ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid19 ,
+                                              _:genid22 ;
+     <http://www.w3.org/ns/odrl/2/target> :I17 ,
+                                          :I37 ,
+                                          :I40 ,
+                                          :I46 ,
+                                          :I47 ,
+                                          :I48 ,
+                                          :I49 ,
+                                          :I5 ,
+                                          :I50 .
+
+_:genid18 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> :PersonalDataBreach .
+
+_:genid19 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           <http://www.w3.org/ns/odrl/2/informedParty> _:genid20 ;
+           <http://www.w3.org/ns/odrl/2/informingParty> _:genid21 .
+
+_:genid22 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           <http://www.w3.org/ns/odrl/2/informedParty> _:genid23 ;
+           <http://www.w3.org/ns/odrl/2/informingParty> _:genid24 ;
+           <http://www.w3.org/ns/odrl/2/consequence> _:genid25 .
+
+_:genid20 rdf:type <http://www.w3.org/ns/dpv#DataProtectionAuthority> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid21 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid23 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid24 rdf:type <http://www.w3.org/ns/dpv#dpv:DataProcessor> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid25 <http://www.w3.org/ns/odrl/2/informedParty> _:genid26 ;
+           <http://www.w3.org/ns/odrl/2/informingParty> _:genid27 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> .
+
+_:genid26 rdf:type <http://www.w3.org/ns/dpv#DataProtectionAuthority> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid27 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+
+:PC rdfs:comment "Data controller has the obligation to consult with the supervisory authority when the DPIA illustrates that the processing will result in a high risk to the privacy of data subjects." ;
+    rdfs:label "Prior Consultation with the Supervisory Authority" ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid28 .
+
+_:genid28 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid29 ;
+           :isRequestedBy _:genid30 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid31 ;
+           <http://www.w3.org/ns/odrl/2/target> :I33 ,
+                                                :I41 ,
+                                                :I5 ,
+                                                :I54 ,
+                                                :I55 ,
+                                                :I56 ,
+                                                :I57 ,
+                                                :I6 .
+
+_:genid29 rdf:type <http://www.w3.org/ns/dpv#DataProtectionAuthority> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid30 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid31 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> :HighRiskDPIA .
+
+
+:RA rdfs:comment "Data controller informs the data subject about its obligation to grant access to the data subject's personal data." ;
+    rdfs:label "Right of Access" ;
+    rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToAccessPersonalData> ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid32 .
+
+_:genid32 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid33 ;
+           :isRequestedBy _:genid34 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid35 ;
+           <http://www.w3.org/ns/odrl/2/target> :I11 ,
+                                                :I12 ,
+                                                :I14 ,
+                                                :I16 ,
+                                                :I17 ,
+                                                :I18 ,
+                                                :I20 ,
+                                                :I21 ,
+                                                :I6 ,
+                                                :I9 .
+
+_:genid33 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid34 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid35 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A15> .
+
+
+:RDM rdfs:comment "Data subject has the right to request the data controller to not be subjected to decisions based solely on automated processing, including profiling." ;
+     rdfs:label "Right to Object to Automated Decision Making" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToNotBeEvaluatedThroughAutomatedProcessing> ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid36 .
+
+_:genid36 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid37 ;
+           :isRequestedBy _:genid38 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid39 ;
+           <http://www.w3.org/ns/odrl/2/target> :I30 .
+
+_:genid37 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid38 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid39 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A22> .
+
+
+:RDP rdfs:comment "Data controller has the obligation to provide a copy of data subject's personal data to the data subject and also to transmit it to other controllers upon request of the data subject." ;
+     rdfs:label "Right to Data Portability" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightOfDataPortability> ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid40 .
+
+_:genid40 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid41 ;
+           :isRequestedBy _:genid42 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/consequence> _:genid43 ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid48 ;
+           <http://www.w3.org/ns/odrl/2/target> :I21 .
+
+_:genid41 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid42 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid43 <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/grantUse> ;
+           <http://www.w3.org/ns/odrl/2/attributedParty> _:genid44 ;
+           <http://www.w3.org/ns/odrl/2/attributingParty> _:genid45 ;
+           <http://www.w3.org/ns/odrl/2/refinement> _:genid46 .
+
+_:genid48 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A20> .
+
+_:genid44 rdf:type <http://www.w3.org/ns/dpv#Recipient> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid45 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid46 <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/isAllOf> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> [ ] .
+
+
+:RE rdfs:comment "Data controller has the obligation to erase the data subject's personal data upon a fundamented request." ;
+    rdfs:label "Right to Erasure" ;
+    rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightOfErasure> ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid49 .
+
+_:genid49 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid50 ;
+           :isRequestedBy _:genid51 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid52 ;
+           <http://www.w3.org/ns/odrl/2/target> :I24 ,
+                                                :I25 ,
+                                                :I26 ,
+                                                :I9 .
+
+_:genid50 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid51 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid52 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/isAllOf> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> [ ] .
+
+
+:RI1 rdfs:comment "Data controller has the obligation to provide information to the data subject regarding personal data directly collected from the data subject."@en ;
+     rdfs:label "Right to be Informed (collected from the Data Subject)"@en ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToBasicInformationAboutProcessing> ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid54 .
+
+_:genid54 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid55 ;
+           :isRequestedBy _:genid56 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid57 ;
+           <http://www.w3.org/ns/odrl/2/target> :I1 ,
+                                                :I10 ,
+                                                :I11 ,
+                                                :I12 ,
+                                                :I13 ,
+                                                :I14 ,
+                                                :I15 ,
+                                                :I16 ,
+                                                :I17 ,
+                                                :I19 ,
+                                                :I2 ,
+                                                :I3 ,
+                                                :I4 ,
+                                                :I5 ,
+                                                :I6 ,
+                                                :I7 ,
+                                                :I8 ,
+                                                :I9 .
+
+_:genid55 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid56 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid57 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A13> .
+
+
+:RI2 rdfs:comment "Data controller has the obligation to provide information to the data subject regarding its personal data collected from other sources." ;
+     rdfs:label "Right to be Informed (collected from other sources)" ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid58 .
+
+_:genid58 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid59 ;
+           :isRequestedBy _:genid60 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid61 ;
+           <http://www.w3.org/ns/odrl/2/target> :I1 ,
+                                                :I10 ,
+                                                :I11 ,
+                                                :I12 ,
+                                                :I13 ,
+                                                :I14 ,
+                                                :I16 ,
+                                                :I17 ,
+                                                :I18 ,
+                                                :I19 ,
+                                                :I2 ,
+                                                :I3 ,
+                                                :I4 ,
+                                                :I5 ,
+                                                :I6 ,
+                                                :I7 ,
+                                                :I8 ,
+                                                :I9 .
+
+_:genid59 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid60 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid61 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A14> .
+
+
+:RN rdfs:comment "Data controller has the obligation to inform the data subject about the rectification, erasure or restriction of processing of its personal data and about any recipients to whom the personal data was disclosed to. The data controller also has to inform the recipients to whom the data was disclosed to so that they procede with the rectification, erasure or restriction of processing of the dat asubject's personal data." ;
+    rdfs:label "Right to be Notified" ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid62 .
+
+_:genid62 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid63 ;
+           :isRequestedBy _:genid64 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/consequence> _:genid65 ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid68 ;
+           <http://www.w3.org/ns/odrl/2/target> :I25 ,
+                                                :I9 .
+
+_:genid63 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid64 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid65 <http://www.w3.org/ns/odrl/2/informedParty> _:genid66 ;
+           <http://www.w3.org/ns/odrl/2/informingParty> _:genid67 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> .
+
+_:genid68 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A19> .
+
+_:genid66 rdf:type <http://www.w3.org/ns/dpv#Recipient> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid67 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+
+:RO rdfs:comment "Data subject has the right to object to any processing performed by the data controller, including for direct marketing purposes" ;
+    rdfs:label "Right to Object" ;
+    rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToObjectToProcessing> ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid69 .
+
+_:genid69 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid70 ;
+           :isRequestedBy _:genid71 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid72 ;
+           <http://www.w3.org/ns/odrl/2/target> :I29 .
+
+_:genid70 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid71 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid72 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A21> .
+
+
+:ROPA-DC rdfs:comment "Data controller should provide a record of its processing activities to the supervisory authority upon request" ;
+         rdfs:label "Records of Processing Activities of Data Controllers" ;
+         rdfs:seeAlso <https://w3id.org/GDPRtEXT#MaintainRecordsOfProcessingActivities> ;
+         <http://www.w3.org/ns/odrl/2/obligation> _:genid73 .
+
+_:genid73 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid74 ;
+           :isRequestedBy _:genid75 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid76 ;
+           <http://www.w3.org/ns/odrl/2/target> :I1 ,
+                                                :I10 ,
+                                                :I11 ,
+                                                :I17 ,
+                                                :I2 ,
+                                                :I20 ,
+                                                :I3 ,
+                                                :I31 ,
+                                                :I32 ,
+                                                :I37 ,
+                                                :I4 ,
+                                                :I40 ,
+                                                :I41 ,
+                                                :I5 ,
+                                                :I6 ,
+                                                :I9 .
+
+_:genid74 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid75 rdf:type <http://www.w3.org/ns/dpv#DataProtectionAuthority> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid76 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> :ComplianceMonitoring .
+
+
+:ROPA-DP rdfs:comment "Data processor should provide a record of its processing activities to the supervisory authority upon request." ;
+         rdfs:label "Records of Processing Activities of Data Processors" ;
+         rdfs:seeAlso <https://w3id.org/GDPRtEXT#MaintainRecordsOfProcessingActivities> ;
+         <http://www.w3.org/ns/odrl/2/obligation> _:genid77 .
+
+_:genid77 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid78 ;
+           :isRequestedBy _:genid79 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid80 ;
+           <http://www.w3.org/ns/odrl/2/target> :I1 ,
+                                                :I10 ,
+                                                :I2 ,
+                                                :I20 ,
+                                                :I3 ,
+                                                :I36 ,
+                                                :I4 ,
+                                                :I40 ,
+                                                :I41 ,
+                                                :I42 ,
+                                                :I43 ,
+                                                :I44 ,
+                                                :I45 ,
+                                                :I5 .
+
+_:genid78 rdf:type <http://www.w3.org/ns/dpv#DataProcessor> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid79 rdf:type <http://www.w3.org/ns/dpv#DataProtectionAuthority> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid80 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> :ComplianceMonitoring .
+
+
+:RR rdfs:comment "Data controller has the obligation to rectify the data subject's personal data upon request." ;
+    rdfs:label "Right to Rectification" ;
+    rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToRectification> ;
+    <http://www.w3.org/ns/odrl/2/obligation> _:genid81 .
+
+_:genid81 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid82 ;
+           :isRequestedBy _:genid83 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid84 ;
+           <http://www.w3.org/ns/odrl/2/target> :I22 .
+
+_:genid82 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid83 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid84 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/eq> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> <http://www.w3.org/ns/dpv-gdpr#A16> .
+
+
+:RRP rdfs:comment "Data controller has the obligation to cease processing the data subject's personal data upon a fundamented request." ;
+     rdfs:label "Right to Restriction of Processing" ;
+     rdfs:seeAlso <https://w3id.org/GDPRtEXT#RightToRestrictProcessing> ;
+     <http://www.w3.org/ns/odrl/2/obligation> _:genid85 .
+
+_:genid85 rdf:type <http://www.w3.org/ns/odrl/2/Obligation> ;
+           :isAnsweredBy _:genid86 ;
+           :isRequestedBy _:genid87 ;
+           <http://www.w3.org/ns/odrl/2/action> <http://www.w3.org/ns/odrl/2/inform> ;
+           <http://www.w3.org/ns/odrl/2/constraint> _:genid88 ;
+           <http://www.w3.org/ns/odrl/2/target> :I25 .
+
+_:genid86 rdf:type <http://www.w3.org/ns/dpv#DataController> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid87 rdf:type <http://www.w3.org/ns/dpv#DataSubject> ,
+                    <http://www.w3.org/ns/odrl/2/Party> .
+
+_:genid88 rdf:type <http://www.w3.org/ns/odrl/2/Constraint> ;
+           <http://www.w3.org/ns/odrl/2/leftOperand> <http://www.w3.org/ns/odrl/2/event> ;
+           <http://www.w3.org/ns/odrl/2/operator> <http://www.w3.org/ns/odrl/2/isAllOf> ;
+           <http://www.w3.org/ns/odrl/2/rightOperand> [ ] .
+
+
+:Stakeholder rdfs:label "GDPR Stakeholder"@en .
+
+
+:TriggerEvent rdfs:label "Trigger Event"@en .
+
+
+###  Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/
