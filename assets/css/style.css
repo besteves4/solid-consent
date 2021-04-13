@@ -85,6 +85,25 @@ img { max-width: 100%; }
 	padding-top: 60px;
 }
 
+.keyword{
+	display: inline-block;
+	background: #9b59b6;
+	background: rgba(155, 89, 182, 0.7);
+	border: 0;
+	/* font-size: 15px; */
+    font-weight: 600;
+    color: #fff;
+    transition: all .3s;
+}
+.keyword:hover, .keyword:focus, .keyword:active, .keyword:active:focus,
+.keyword.btn-primary:not(:disabled):not(.disabled):active,
+.keyword.btn-primary:not(:disabled):not(.disabled):active:focus {
+	background: rgba(184, 149, 197, 0.9);
+	outline: 0;
+	color: #fff;
+	box-shadow: none;
+}
+
 .btn-link-1 {
 	display: inline-block;
 	height: 50px;
