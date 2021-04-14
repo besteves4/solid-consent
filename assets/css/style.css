@@ -556,3 +556,32 @@ footer {
 }
 
 .footer-bottom a:hover, .footer-bottom a:focus { color: #888; }
+
+.table, th, td {
+	border: 3px solid #444;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.table-top {
+	background-color: #444;
+	color: white;
+	font-size: smaller;
+}
+
+.table-title {
+	background-color: #aaa;
+	color: white;
+	font-size: smaller;
+}
+
+.table-cell {
+	text-align: justify;
+	text-justify: inter-word;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: smaller;
+}

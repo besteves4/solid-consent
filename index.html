@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <title>Bootstrap 4 One Page Website Tutorial</title>
+        <title>ODRL Profile for Access Control Policies in Solid</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
@@ -42,6 +42,9 @@
 			            </li>
 						<li class="nav-item">
 			                <a class="nav-link scroll-link" href="#motivation">Motivation</a>
+			            </li>
+						<li class="nav-item">
+			                <a class="nav-link scroll-link" href="#comp-questions">Competency Questions</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link scroll-link" href="#resources">Resources</a>
@@ -93,7 +96,7 @@
 								which permits invoking privacy and data protection-specific terms.
                         	</p>
                         </div>
-						<div>
+						<div class="description wow fadeInLeftBig">
 							<a href="https://www.wikidata.org/wiki/Q55408718" target="_blank" class="badge keyword">Solid</a>
 							<a href="https://www.wikidata.org/wiki/Q188961" target="_blank" class="badge keyword">decentralized datastores</a>
 							<a href="https://www.wikidata.org/wiki/Q228502" target="_blank" class="badge keyword">access control</a>
@@ -146,7 +149,7 @@
 		</div>
         
 		<!-- Competency Questions -->
-		<div class="competency-questions-container section-container">
+		<div class="comp-questions-container section-container">
 			<div class="container">
 				<div class="row">
 					<div class="col services section-description wow fadeIn">
@@ -155,6 +158,114 @@
 					</div>
 				</div>
 				<div class="row">
+					<table class="center">
+						<tr>
+							<th colspan=2 class="table-top">
+								ODRL Profile for Access Control in Solid
+							</th>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								1. Purpose
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								The purpose of this profile of ODRL is to support policies 
+								determining the access control to personaldata stored in Solid pods.
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								2. Scope
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								The scope of this profile is limited to the definition of an ODRL Profile 
+								for Access Control in Solid. In particular, the introduced elements will 
+								serve one of these purposes: (i) define actions supporting enforcement 
+								of current ACL verbs, (ii) define data protection-related actions and restrictions 
+								defined in GDPR, (iii) any vocabulary element to support policy patterns that can 
+								be anticipated to be common, and (iv) elements necessary to support the authorization 
+								reasoning decision.
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								3. Implementation Language
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								OWL
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								4. Intended End-Users
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								Developers of Solid servers and Solid clients.
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								5. Intended Uses
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								Use 1. Declaration of a policy by an individual storing personal data in a pod.<br>
+								Use 2. Request of data made by a person or application to gain access to the data in different modalities.<br>
+								Use 3. Contextual elements to be considered in the authorization decision.<br>
+								Use 4. Explanation of the authorization decision.
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								6. Ontology Requirements
+							</th>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								a. Non-Functional Requirements
+							</th>
+						</tr>
+						<tr>
+							<td colspan=2 class="table-cell">
+								NFR 1. The ontology shall be published online with standard documentation.
+							</td>
+						</tr>
+						<tr>
+							<th colspan=2 class="table-title">
+								b. Functional Requirements: Groups of Competency Question
+							</th>
+						</tr>
+						<tr>
+							<td class="table-title">
+								CQG1. Related to authorization
+							</td>
+							<td class="table-title">
+								CQG2. Related to GDPR
+							</td>
+						</tr>
+						<tr>
+							<td class="table-cell">
+								CQ1. Which actions are to be authorized?<br>
+								CQ2. Which requirements are to be authorized?<br>
+								CQ3. Who are the parties intervening in policy?<br>
+								CQ4. Which is the priority of a certain policy?<br>
+								CQ5. Which are the contextual elements to be considered in the authorization decision?
+							</td>
+							<td class="table-cell">
+								CQ6. Which obligations and requirements, and information about personal data and its processing are necessary?<br>
+								CQ7. Which is the legal identification of the policy parties?
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
