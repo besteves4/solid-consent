@@ -294,7 +294,7 @@
 									which decouples data from applications, based on interoperable 
 									data formats and protocols.
 								</p>
-								<a class="btn btn-primary btn-link-3" href="https://solidproject.org/TR/">
+								<a class="btn btn-primary btn-link-3" href="https://solidproject.org/TR/" target="_blank">
 									Solid Technical Reports
 								</a>
 	                    	</div>
@@ -314,10 +314,10 @@
 									to express information about permissions, prohibitions and duties 
 									related to digital assets.
 								</p>
-								<a class="btn btn-primary btn-link-3" href="https://www.w3.org/TR/odrl-model/">
+								<a class="btn btn-primary btn-link-3" href="https://www.w3.org/TR/odrl-model/" target="_blank">
 									Information Model
 								</a>
-								<a class="btn btn-primary btn-link-3" href="https://www.w3.org/TR/odrl-vocab/">
+								<a class="btn btn-primary btn-link-3" href="https://www.w3.org/TR/odrl-vocab/" target="_blank">
 									Vocabulary & Expression
 								</a>
 	                    	</div>
@@ -337,10 +337,10 @@
 									to annotate and categorize the handling of personal data 
 									in accordance with established data protection regulations. 
 								</p>
-								<a class="btn btn-primary btn-link-3" href="https://dpvcg.github.io/dpv/">
+								<a class="btn btn-primary btn-link-3" href="https://dpvcg.github.io/dpv/" target="_blank">
 									DPV specification
 								</a>
-								<a class="btn btn-primary btn-link-3" href="https://dpvcg.github.io/dpv-gdpr/">
+								<a class="btn btn-primary btn-link-3" href="https://dpvcg.github.io/dpv-gdpr/" target="_blank">
 									DPV-GDPR extension
 								</a>
 	                    	</div>
@@ -359,12 +359,39 @@
 	                    <div class="divider-1 wow fadeInUp"><span></span></div>
 	                </div>
 	            </div>
-	            <div class="row">
-                	
+	            <div class="row code-box">
+                	<code>
+						<span class="code-text">
+							<span class="prefix">@prefix</span> rdf: <span class="url">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#></span> .<br>
+							<span class="prefix">@prefix</span> rdfs <span class="url">&lt;http://www.w3.org/2000/01/rdf-schema#></span> .<br>
+							<span class="prefix">@prefix</span> owl: <span class="url">&lt;http://www.w3.org/2002/07/owl#></span> .<br>
+							<span class="prefix">@prefix</span> odrl: <span class="url">&lt;http://www.w3.org/ns/odrl/2/></span> .<br>
+							<span class="prefix">@prefix</span> dpv: <span class="url">&lt;http://www.w3.org/ns/dpv#></span> .<br>
+							<span class="prefix">@prefix</span> acl: <span class="url">&lt;http://www.w3.org/ns/auth/acl#></span> .<br><br>
+
+							<span class="prefix">@base</span> <span class="url">&lt;https://example.com/odrl-ac></span> .<br><br>
+
+							odrl-ac:<br>
+							<span class="tab">a owl:Ontology ;</span><br>
+							<span class="tab">rdfs:label <span class="string">"ODRL access control policies profile"@en</span> .</span><br><br>
+
+							acl:Access rdfs:subClassOf odrl:Action .<br><br>
+
+							dpv:Processing rdfs:subClassOf odrl:Action .<br><br>
+
+							dpv:PersonalDataCategory rdfs:subClassOf odrl:Asset .<br><br>
+
+							dpv:Purpose rdfs:subClassOf odrl:purpose .<br><br>
+
+							dpv:Recipient rdfs:subClassOf odrl:recipient .<br><br>
+
+							dpv:LegalEntity rdfs:subClassOf odrl:Party .
+						</span><br><br>
+					</code>
 	            </div>
 	            <div class="row">
 	            	<div class="col section-bottom-button wow fadeInUp">
-                        <a class="btn btn-primary btn-link-3" href="#">Download profile</a>
+                        <a class="btn btn-primary btn-link-3" href="https://github.com/besteves4/odrl-dpv-acl-profile" target="_blank">Download profile</a>
 	            	</div>
 	            </div>
 	        </div>

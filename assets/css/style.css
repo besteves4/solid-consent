@@ -585,3 +585,37 @@ footer {
 	padding-right: 10px;
 	font-size: smaller;
 }
+
+.code-text {
+	color: black;
+}
+
+.code-box {
+	font-family: Consolas,"courier new";
+	background-color: #f1f1f1;
+	padding: 2px;
+	font-size: 105%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+	text-justify: inter-word;
+	width: 15cm;
+	padding-left:1em;
+	line-height: 1.2;
+}
+
+.prefix{
+	color: crimson;
+}
+
+.url {
+	color: #9b59b6;
+}
+
+.string {
+	color: rgb(97, 132, 228);
+}
+
+.tab{
+	padding-left:4em
+}
