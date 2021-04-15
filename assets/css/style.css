@@ -37,8 +37,10 @@ h3 {
 img { max-width: 100%; }
 
 .medium-paragraph {
-	font-size: 17px;
-	line-height: 32px;
+	font-size: 16px;
+	line-height: 2.2;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 .colored-text { color: #9b59b6; }
@@ -286,11 +288,6 @@ img { max-width: 100%; }
 
 .about-us-box-text h3 {
 	margin-top: 0;
-}
-
-.about-us-box-text .medium-paragraph {
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
 
 .about-us-box-text a { border-bottom: 1px dashed #9b59b6; }
@@ -556,6 +553,27 @@ footer {
 }
 
 .footer-bottom a:hover, .footer-bottom a:focus { color: #888; }
+
+.compliance {
+    max-width:370px;
+    max-height:370px;
+    width:auto;
+    height:auto;
+}
+
+.preference {
+    max-width:370px;
+    max-height:370px;
+    width:auto;
+    height:auto;
+}
+
+.transparency {
+    max-width:500px;
+    max-height:500px;
+    width:auto;
+    height:auto;
+}
 
 .table, th, td {
 	border: 3px solid #444;
