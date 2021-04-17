@@ -6,16 +6,16 @@
 @prefix odrl-ac: <https://example.com/odrl-ac> .
 
 :ex-1
-    rdf:type odrl:Policy ;
+    rdf:type odrl:Policy ; 
     odrl:permission [
         rdf:type odrl:Permission ;
         odrl:assigner <https://beatriz.com/profile/card#me> ;
-        odrl:target dpv:Contact, dpv:EmailAddress ;
+        odrl:target dpv:Contact, dpv:Health ;
         odrl:action acl:Read, acl:Write ;
         odrl:constraint [
             odrl:leftOperand dpv:Purpose ;
             odrl:operator odrl:isA ;
-            odrl:rightOperand dpv:RegistrationAuthentication
+            odrl:rightOperand dpv:ResearchAndDevelopment
         ] ;
         odrl:constraint [
             odrl:leftOperand dpv:Recipient ;
