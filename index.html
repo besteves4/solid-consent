@@ -539,7 +539,17 @@
 	                </div>
 	            </div>
 	            <div class="row">
-                	
+                	<div class="dropdown">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="appMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  App request
+						</a>
+					  
+						<div class="dropdown-menu" aria-labelledby="appMenuLink">
+						  <a class="dropdown-item" id="policy1" onclick="getAppPolicyURL('http://localhost:9000/assets/rdf/app-policy-ex-2.ttl')">App policy 1</a>
+						  <a class="dropdown-item" href="#">Another action</a>
+						  <a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					  </div>
 	            </div>
 	        </div>
         </div>
@@ -699,6 +709,7 @@
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/waypoints.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+		<script src="assets/js/odrl-matching.js"></script>
 
     </body>
 
