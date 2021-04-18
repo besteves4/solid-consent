@@ -658,3 +658,7 @@ footer {
 	padding-top: 0.5cm;
 	padding-bottom: 0.5cm;
 }
+
+.demo-button{
+	color: white !important;
+}

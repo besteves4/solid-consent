@@ -8,7 +8,7 @@
 :ex-1
     rdf:type odrl:Policy ; 
     odrl:permission [
-        rdf:type odrl:Permission ;
+        a odrl:Permission ;
         odrl:assigner <https://beatriz.com/profile/card#me> ;
         odrl:target dpv:Contact, dpv:Health ;
         odrl:action acl:Read, acl:Write ;

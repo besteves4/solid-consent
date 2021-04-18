@@ -1,53 +1,76 @@
-var $rdf = require('rdflib');
 
-FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/')
-XSD  = $rdf.Namespace('http://www.w3.org/2001/XMLSchema#')
-RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
-RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
-ODRL = $rdf.Namespace("http://www.w3.org/ns/odrl/2/")
-DPV = $rdf.Namespace("http://www.w3.org/ns/dpv#")
-ACL = $rdf.Namespace("http://www.w3.org/ns/auth/acl#")
-
-var timeout = 5000 // 5000 ms timeout
-
-var userPreferenceUri = 'http://localhost:9000/assets/rdf/user-preference-ex-1.ttl'
-var userPreferenceStore = $rdf.graph()
-var userPreferenceStoreFetcher = new $rdf.Fetcher(userPreferenceStore, timeout)
-var userPermissions = null
-
-// var appPolicyUri = 'http://localhost:9000/assets/rdf/app-policy-ex-2.ttl'
-var appPolicyStore = $rdf.graph()
-var appPolicyFetcher = new $rdf.Fetcher(appPolicyStore, timeout)
-var appPermissions = null
-
-var dpvUri = 'https://www.w3.org/ns/dpv.ttl'
-var dpvStore = $rdf.graph()
-var dpvFetcher = new $rdf.Fetcher(dpvStore, timeout)
-
-var aclReadMapping = [DPV('Use').value, DPV('Collect').value]
-var aclWriteMapping = [DPV('MakeAvailable').value, DPV('Store').value]
+var appURL = null
+var userURL = null
 
 function getAppPolicyURL(url) {
-    console.log(url)
+    appURL = url;
+    console.log(appURL)
+    var app1 = document.getElementById('app1');
+        if (app1.style.display == 'block') {
+            app1.style.display = 'none';
+        }
+        else {
+            app1.style.display = 'block';
+        }
+}
 
-    userPreferenceStoreFetcher.nowOrWhenFetched(userPreferenceUri, function(ok, body, xhr) {
+function getUserPolicyURL(url) {
+    userURL = url;
+    console.log(userURL)
+    var app2 = document.getElementById('app2');
+        if (app2.style.display == 'block') {
+            app2.style.display = 'none';
+        }
+        else {
+            app2.style.display = 'block';
+        }
+}
+
+function getTest() {
+    FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/')
+    XSD  = $rdf.Namespace('http://www.w3.org/2001/XMLSchema#')
+    RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+    RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+    ODRL = $rdf.Namespace("http://www.w3.org/ns/odrl/2/")
+    DPV = $rdf.Namespace("http://www.w3.org/ns/dpv#")
+    ACL = $rdf.Namespace("http://www.w3.org/ns/auth/acl#")
+    var timeout = 5000 // 5000 ms timeout
+    
+    var userPreferenceStore = $rdf.graph()
+    var userPreferenceStoreFetcher = new $rdf.Fetcher(userPreferenceStore, timeout)
+    var userPermissions = null
+
+    var appPolicyStore = $rdf.graph()
+    var appPolicyFetcher = new $rdf.Fetcher(appPolicyStore, timeout)
+    var appPermissions = null
+    
+    var dpvUri = 'https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/dpv.ttl'
+    var dpvStore = $rdf.graph()
+    var dpvFetcher = new $rdf.Fetcher(dpvStore, timeout)
+
+    var aclReadMapping = [DPV('Use').value, DPV('Collect').value]
+    var aclWriteMapping = [DPV('MakeAvailable').value, DPV('Store').value]
+  
+    userPreferenceStoreFetcher.nowOrWhenFetched(userURL, undefined, function(ok, body, xhr) {
         if (!ok) {
             console.log("Oops, something happened and couldn't fetch data");
         } else {
-    
-            appPolicyFetcher.nowOrWhenFetched(url, function(ok, body, xhr) {
+            appPolicyFetcher.nowOrWhenFetched(appURL, undefined, function(ok, body, xhr) {
                 if (!ok) {
                     console.log("Oops, something happened and couldn't fetch data");
                 } else {
+                    
                     appPermissions = appPolicyStore.statementsMatching(undefined, ODRL('permission'), undefined)
     
                     userPermissions = userPreferenceStore.statementsMatching(undefined, ODRL('permission'), undefined)
                     userProhibitions = userPreferenceStore.statementsMatching(undefined, ODRL('prohibition'), undefined)
     
-                    dpvFetcher.nowOrWhenFetched(dpvUri, function(ok, body, xhr) {
+                    dpvFetcher.nowOrWhenFetched(dpvUri, undefined, function(ok, body, xhr) {
                         if (!ok) {
                             console.log("Oops, something happened and couldn't fetch data");
                         } else {
+                            console.log(appPolicyStore)
+                            console.log(userURL)
                             for (var i=0; i<appPermissions.length;i++) {
                                 appPermission = appPermissions[i]
                     
@@ -162,8 +185,11 @@ function getAppPolicyURL(url) {
                                     }
             
                                     if(resultTarget && resultActions && resultPurpose && resultRecipient){
+                                        // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
+                                        document.getElementById("result").innerText = 'Access authorized';
                                         console.log('App permission ' + (i+1) + ' matches user preference permission ' + (j+1))
                                     } else {
+                                        document.getElementById("result").innerText = 'Access denied';
                                         console.log('App permission ' + (i+1) + ' does not match user preference permission ' + (j+1))
                                     }
                                 }

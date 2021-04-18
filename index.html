@@ -538,18 +538,83 @@
 	                    <div class="divider-1 wow fadeInUp"><span></span></div>
 	                </div>
 	            </div>
-	            <div class="row">
-                	<div class="dropdown">
+	            <div class="row" style="padding-top: 0.5cm; padding-bottom: 0.5cm;">
+                	<div class="col-md-6 dropdown">
 						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="appMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						  App request
+							App request
 						</a>
 					  
 						<div class="dropdown-menu" aria-labelledby="appMenuLink">
-						  <a class="dropdown-item" id="policy1" onclick="getAppPolicyURL('http://localhost:9000/assets/rdf/app-policy-ex-2.ttl')">App policy 1</a>
-						  <a class="dropdown-item" href="#">Another action</a>
-						  <a class="dropdown-item" href="#">Something else here</a>
+						  	<a class="dropdown-item" onclick="getAppPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/app-policy-ex-2.ttl')">App policy 1</a>
 						</div>
-					  </div>
+					</div>
+					<div id="app1" style="display:none;" class="col-md-6">
+						<div class="row example-box">
+							<div>
+								:app-1 <br>
+								<span class="tab">a odrl:Policy ;</span><br>
+    							<span class="tab">odrl:permission [</span><br>
+								<span class="tab"><span class="tab">a odrl:Permission ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assignee &lt;https://example-app-1.com> ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target dpv:EmailAddress ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action dpv:Use, dpv:MakeAvailable ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:AcademicResearch</span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand dpv:Recipient ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ThirdParty</span></span></span><br>
+								<span class="tab"><span class="tab">] </span></span><br>
+								<span class="tab">] .</span>
+							</div>
+	                    </div>
+					</div>
+	            </div>
+				<div class="row" style="padding-top: 0.5cm; padding-bottom: 0.5cm;">
+					<div class="col-md-6 dropdown">
+						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="appMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							User preference
+						</a>
+					  
+						<div class="dropdown-menu" aria-labelledby="appMenuLink2">
+						  	<a class="dropdown-item" onclick="getUserPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/user-preference-ex-1.ttl')">User policy 1</a>
+						</div>
+					</div>
+					<div id="app2" style="display:none;" class="col-md-6">
+						<div class="row example-box">
+							<div>
+								:policy-1<br>
+								<span class="tab">a odrl:Policy ;</span><br>
+								<span class="tab">odrl:permission [</span><br>
+								<span class="tab"><span class="tab">a odrl:Permission ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assigner &lt;https://beatriz.databox.me/profile/card#me> ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target dpv:Contact, dpv:Health ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action acl:Read, acl:Write ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">drl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ResearchAndDevelopment</span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">drl:leftOperand dpv:Recipient ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ThirdParty</span></span></span><br>
+								<span class="tab"><span class="tab">]</span></span><br>
+								<span class="tab">] .</span>
+							</div>
+	                    </div>
+					</div>
+	            </div>
+				<div class="row" style="padding-top: 0.5cm; padding-bottom: 0.5cm;">
+					<div class="col-md-6 dropdown">
+						<a class="btn btn-dark" id="main" onclick="getTest()">Run Authorisation Check</a>
+					</div>
+					<div class="col-md-6">
+						<div id="result"></div>
+					</div>
 	            </div>
 	        </div>
         </div>
@@ -709,6 +774,7 @@
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/waypoints.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+		<script src="assets/js/rdflib.js"></script>
 		<script src="assets/js/odrl-matching.js"></script>
 
     </body>
