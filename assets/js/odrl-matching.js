@@ -5,24 +5,33 @@ var userURL = null
 function getAppPolicyURL(url) {
     appURL = url;
     console.log(appURL)
+
+    const splits = url.split('-')
+    policy = splits[splits.length - 1].split('.')
+
     var app1 = document.getElementById('app1');
-        if (app1.style.display == 'block') {
-            app1.style.display = 'none';
-        }
-        else {
-            app1.style.display = 'block';
-        }
+    var app2 = document.getElementById('app2');
+
+    console.log(policy[0])
+
+    if(policy[0] == "1"){
+        app1.style.display = 'block';
+        app2.style.display = 'none';
+    } else if (policy[0] == "2"){
+        app1.style.display = 'none';
+        app2.style.display = 'block';
+    }
 }
 
 function getUserPolicyURL(url) {
     userURL = url;
     console.log(userURL)
-    var app2 = document.getElementById('app2');
-        if (app2.style.display == 'block') {
-            app2.style.display = 'none';
+    var user1 = document.getElementById('user1');
+        if (user1.style.display == 'block') {
+            user1.style.display = 'none';
         }
         else {
-            app2.style.display = 'block';
+            user1.style.display = 'block';
         }
 }
 
@@ -69,7 +78,6 @@ function getTest() {
                         if (!ok) {
                             console.log("Oops, something happened and couldn't fetch data");
                         } else {
-                            console.log(appPolicyStore)
                             console.log(userURL)
                             for (var i=0; i<appPermissions.length;i++) {
                                 appPermission = appPermissions[i]
@@ -160,37 +168,56 @@ function getTest() {
             
                                     /* Match recipient constraint */
                                     var userRecipient = userPreferenceStore.statementsMatching(userConstraint.object, undefined, DPV('Recipient'))
-                                    findUserRecipientConstraint = []
-                                    for (var c=0; c<userConstraint.length;c++) {
-                                        if(userConstraint[c].object.value == userRecipient[0].subject.value){
-                                            findUserRecipientConstraint.push(userConstraint[c])
-                                        }
-                                    }
-            
                                     var appRecipient = appPolicyStore.statementsMatching(appConstraint.object, undefined, DPV('Recipient'))
+
+                                    findUserRecipientConstraint = []
                                     findAppRecipientConstraint = []
-                                    for (var c=0; c<appConstraint.length;c++) {
-                                        if(appConstraint[c].object.value == appRecipient[0].subject.value){
-                                            findAppRecipientConstraint.push(appConstraint[c])
+                                    resultRecipient = null
+                                    if(userRecipient.length > 0 && appRecipient.length > 0){
+                                        for (var c=0; c<userConstraint.length;c++) {
+                                            if(userConstraint[c].object.value == userRecipient[0].subject.value){
+                                                findUserRecipientConstraint.push(userConstraint[c])
+                                            }
                                         }
-                                    }
-            
-                                    if(findUserRecipientConstraint.length > 0 && findAppRecipientConstraint.length > 0){ // if recipient is defined
+                                        
+                                        for (var c=0; c<appConstraint.length;c++) {
+                                            if(appConstraint[c].object.value == appRecipient[0].subject.value){
+                                                findAppRecipientConstraint.push(appConstraint[c])
+                                            }
+                                        }
+
                                         var specifiedUserRecipients = userPreferenceStore.statementsMatching(findUserRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
                                         var specifiedAppRecipients = appPolicyStore.statementsMatching(findAppRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        
                                         resultRecipient = specifiedAppRecipients.map(a => specifiedUserRecipients.indexOf(a) > -1).every(Boolean)
                                         if(!resultRecipient){
                                             console.log("Access Denied at recipient")
                                         }
                                     }
-            
-                                    if(resultTarget && resultActions && resultPurpose && resultRecipient){
-                                        // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
-                                        document.getElementById("result").innerText = 'Access authorized';
-                                        console.log('App permission ' + (i+1) + ' matches user preference permission ' + (j+1))
+
+                                    console.log(resultRecipient)
+                                    if(resultRecipient == null){
+                                        if(resultTarget && resultActions && resultPurpose){
+                                            // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
+                                            document.getElementById("result").innerText = 'Access authorized';
+                                            document.getElementById("result").style.color = 'green';
+                                            console.log('App permission ' + (i+1) + ' matches user preference permission ' + (j+1))
+                                        } else {
+                                            document.getElementById("result").innerText = 'Access denied';
+                                            document.getElementById("result").style.color = 'red';
+                                            console.log('App permission ' + (i+1) + ' does not match user preference permission ' + (j+1))
+                                        }
                                     } else {
-                                        document.getElementById("result").innerText = 'Access denied';
-                                        console.log('App permission ' + (i+1) + ' does not match user preference permission ' + (j+1))
+                                        if(resultTarget && resultActions && resultPurpose && resultRecipient){
+                                            // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
+                                            document.getElementById("result").innerText = 'Access authorized';
+                                            document.getElementById("result").style.color = 'green';
+                                            console.log('App permission ' + (i+1) + ' matches user preference permission ' + (j+1))
+                                        } else {
+                                            document.getElementById("result").innerText = 'Access denied';
+                                            document.getElementById("result").style.color = 'red';
+                                            console.log('App permission ' + (i+1) + ' does not match user preference permission ' + (j+1))
+                                        }
                                     }
                                 }
                     
