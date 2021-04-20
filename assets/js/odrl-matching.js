@@ -12,8 +12,6 @@ function getAppPolicyURL(url) {
     var app1 = document.getElementById('app1');
     var app2 = document.getElementById('app2');
 
-    console.log(policy[0])
-
     if(policy[0] == "1"){
         app1.style.display = 'block';
         app2.style.display = 'none';
@@ -26,13 +24,20 @@ function getAppPolicyURL(url) {
 function getUserPolicyURL(url) {
     userURL = url;
     console.log(userURL)
+
+    const splits = url.split('-')
+    policy = splits[splits.length - 1].split('.')
+
     var user1 = document.getElementById('user1');
-        if (user1.style.display == 'block') {
-            user1.style.display = 'none';
-        }
-        else {
-            user1.style.display = 'block';
-        }
+    var user2 = document.getElementById('user2');
+
+    if(policy[0] == "1"){
+        user1.style.display = 'block';
+        user2.style.display = 'none';
+    } else if (policy[0] == "2"){
+        user1.style.display = 'none';
+        user2.style.display = 'block';
+    }
 }
 
 function getTest() {
@@ -86,26 +91,26 @@ function getTest() {
                                     userPermission = userPermissions[j]
             
                                     /* Match personal data target */
-                                    var userTargets = userPreferenceStore.statementsMatching(userPermission.object, ODRL('target'), undefined).map(a => a.object.value)
-                                    var appTargets = appPolicyStore.statementsMatching(appPermission.object, ODRL('target'), undefined).map(a => a.object.value)
+                                    var userPermissionTargets = userPreferenceStore.statementsMatching(userPermission.object, ODRL('target'), undefined).map(a => a.object.value)
+                                    var appPermissionTargets = appPolicyStore.statementsMatching(appPermission.object, ODRL('target'), undefined).map(a => a.object.value)
                                     
-                                    var getUserTargetsSubclasses = userPreferenceStore.statementsMatching(userPermission.object, ODRL('target'), undefined)
-                                    for (var t=0; t<getUserTargetsSubclasses.length;t++) {
-                                        subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserTargetsSubclasses[t].object).map(a => a.subject.value)
-                                        userTargets.push(subclasses)
+                                    var getUserTargetsPermissionSubclasses = userPreferenceStore.statementsMatching(userPermission.object, ODRL('target'), undefined)
+                                    for (var t=0; t<getUserTargetsPermissionSubclasses.length;t++) {
+                                        subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserTargetsPermissionSubclasses[t].object).map(a => a.subject.value)
+                                        userPermissionTargets.push(subclasses)
                                     }
     
-                                    resultTarget = appTargets.map(a => userTargets.flat().indexOf(a) > -1).every(Boolean)
-                                    if(!resultTarget){
+                                    resultPermissionTarget = appPermissionTargets.map(a => userPermissionTargets.flat().indexOf(a) > -1).every(Boolean)
+                                    if(!resultPermissionTarget){
                                         console.log("Access Denied at target")
                                     }
     
                                     
             
                                     /* Match processing actions */
-                                    var userActions = userPreferenceStore.statementsMatching(userPermission.object, ODRL('action'), undefined).map(a => a.object.value)
-                                    var appActions = appPolicyStore.statementsMatching(appPermission.object, ODRL('action'), undefined).map(a => a.object.value)
-                                    var mappedAppActions = appActions.map(
+                                    var userPermissionActions = userPreferenceStore.statementsMatching(userPermission.object, ODRL('action'), undefined).map(a => a.object.value)
+                                    var appPermissionActions = appPolicyStore.statementsMatching(appPermission.object, ODRL('action'), undefined).map(a => a.object.value)
+                                    var mappedAppPermissionActions = appPermissionActions.map(
                                         function(a){
                                             if(aclReadMapping.indexOf(a) > -1){
                                                 return a.replace(a, ACL('Read').value);
@@ -114,7 +119,7 @@ function getTest() {
                                             }
                                         }
                                     );
-                                    mappedAppActions = mappedAppActions.map(
+                                    mappedAppPermissionActions = mappedAppPermissionActions.map(
                                         function(a){
                                             if(aclWriteMapping.indexOf(a) > -1){
                                                 return a.replace(a, ACL('Write').value);
@@ -123,81 +128,81 @@ function getTest() {
                                             }
                                         }
                                     );
-                                    resultActions = mappedAppActions.map(a => userActions.indexOf(a) > -1).every(Boolean)
-                                    if(!resultActions){
+                                    resultPermissionActions = mappedAppPermissionActions.map(a => userPermissionActions.indexOf(a) > -1).every(Boolean)
+                                    if(!resultPermissionActions){
                                         console.log("Access Denied at action")
                                     }
             
                                     /* Match purpose constraint */
-                                    var userConstraint = userPreferenceStore.statementsMatching(userPermission.object, ODRL('constraint'), undefined)
-                                    var appConstraint = appPolicyStore.statementsMatching(appPermission.object, ODRL('constraint'), undefined)
+                                    var userPermissionConstraint = userPreferenceStore.statementsMatching(userPermission.object, ODRL('constraint'), undefined)
+                                    var appPermissionConstraint = appPolicyStore.statementsMatching(appPermission.object, ODRL('constraint'), undefined)
                                     
-                                    var userPurpose = userPreferenceStore.statementsMatching(userConstraint.object, undefined, DPV('Purpose'))
-                                    var appPurpose = appPolicyStore.statementsMatching(appConstraint.object, undefined, DPV('Purpose'))
+                                    var userPermissionPurpose = userPreferenceStore.statementsMatching(userPermissionConstraint.object, undefined, DPV('Purpose'))
+                                    var appPermissionPurpose = appPolicyStore.statementsMatching(appPermissionConstraint.object, undefined, DPV('Purpose'))
                                     
-                                    findUserPurposeConstraint = []
-                                    findAppPurposeConstraint = []
-                                    resultPurpose = false
-                                    if(userPurpose.length > 0 && appPurpose.length > 0){
-                                        for (var c=0; c<userConstraint.length;c++) {
-                                            if(userConstraint[c].object.value == userPurpose[0].subject.value){
-                                                findUserPurposeConstraint.push(userConstraint[c])
+                                    findUserPermissionPurposeConstraint = []
+                                    findAppPermissionPurposeConstraint = []
+                                    resultPermissionPurpose = false
+                                    if(userPermissionPurpose.length > 0 && appPermissionPurpose.length > 0){
+                                        for (var c=0; c<userPermissionConstraint.length;c++) {
+                                            if(userPermissionConstraint[c].object.value == userPermissionPurpose[0].subject.value){
+                                                findUserPermissionPurposeConstraint.push(userPermissionConstraint[c])
                                             }
                                         }
             
-                                        for (var c=0; c<appConstraint.length;c++) {
-                                            if(appConstraint[c].object.value == appPurpose[0].subject.value){
-                                                findAppPurposeConstraint.push(appConstraint[c])
+                                        for (var c=0; c<appPermissionConstraint.length;c++) {
+                                            if(appPermissionConstraint[c].object.value == appPermissionPurpose[0].subject.value){
+                                                findAppPermissionPurposeConstraint.push(appPermissionConstraint[c])
                                             }
                                         }
             
-                                        var specifiedUserPurposes = userPreferenceStore.statementsMatching(findUserPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
-                                        var specifiedAppPurposes = appPolicyStore.statementsMatching(findAppPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedUserPermissionPurposes = userPreferenceStore.statementsMatching(findUserPermissionPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedAppPermissionPurposes = appPolicyStore.statementsMatching(findAppPermissionPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
                                         
-                                        var getUserPurposesSubclasses = userPreferenceStore.statementsMatching(findUserPurposeConstraint[0].object, ODRL('rightOperand'), undefined)
-                                        for (var p=0; p<getUserPurposesSubclasses.length;p++) {
-                                            subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserPurposesSubclasses[p].object).map(a => a.subject.value)
-                                            specifiedUserPurposes.push(subclasses)
+                                        var getUserPermissionPurposesSubclasses = userPreferenceStore.statementsMatching(findUserPermissionPurposeConstraint[0].object, ODRL('rightOperand'), undefined)
+                                        for (var p=0; p<getUserPermissionPurposesSubclasses.length;p++) {
+                                            subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserPermissionPurposesSubclasses[p].object).map(a => a.subject.value)
+                                            specifiedUserPermissionPurposes.push(subclasses)
                                         }
     
-                                        resultPurpose = specifiedAppPurposes.map(a => specifiedUserPurposes.flat().indexOf(a) > -1).every(Boolean)
-                                        if(!resultPurpose){
+                                        resultPermissionPurpose = specifiedAppPermissionPurposes.map(a => specifiedUserPermissionPurposes.flat().indexOf(a) > -1).every(Boolean)
+                                        if(!resultPermissionPurpose){
                                             console.log("Access Denied at purpose")
                                         }
                                     }
             
                                     /* Match recipient constraint */
-                                    var userRecipient = userPreferenceStore.statementsMatching(userConstraint.object, undefined, DPV('Recipient'))
-                                    var appRecipient = appPolicyStore.statementsMatching(appConstraint.object, undefined, DPV('Recipient'))
+                                    var userPermissionRecipient = userPreferenceStore.statementsMatching(userPermissionConstraint.object, undefined, DPV('Recipient'))
+                                    var appPermissionRecipient = appPolicyStore.statementsMatching(appPermissionConstraint.object, undefined, DPV('Recipient'))
 
-                                    findUserRecipientConstraint = []
-                                    findAppRecipientConstraint = []
-                                    resultRecipient = null
-                                    if(userRecipient.length > 0 && appRecipient.length > 0){
-                                        for (var c=0; c<userConstraint.length;c++) {
-                                            if(userConstraint[c].object.value == userRecipient[0].subject.value){
-                                                findUserRecipientConstraint.push(userConstraint[c])
+                                    findUserPermissionRecipientConstraint = []
+                                    findAppPermissionRecipientConstraint = []
+                                    resultPermissionRecipient = null
+                                    if(userPermissionRecipient.length > 0 && appPermissionRecipient.length > 0){
+                                        for (var c=0; c<userPermissionConstraint.length;c++) {
+                                            if(userPermissionConstraint[c].object.value == userPermissionRecipient[0].subject.value){
+                                                findUserPermissionRecipientConstraint.push(userPermissionConstraint[c])
                                             }
                                         }
                                         
-                                        for (var c=0; c<appConstraint.length;c++) {
-                                            if(appConstraint[c].object.value == appRecipient[0].subject.value){
-                                                findAppRecipientConstraint.push(appConstraint[c])
+                                        for (var c=0; c<appPermissionConstraint.length;c++) {
+                                            if(appPermissionConstraint[c].object.value == appPermissionRecipient[0].subject.value){
+                                                findAppPermissionRecipientConstraint.push(appPermissionConstraint[c])
                                             }
                                         }
 
-                                        var specifiedUserRecipients = userPreferenceStore.statementsMatching(findUserRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
-                                        var specifiedAppRecipients = appPolicyStore.statementsMatching(findAppRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedUserPermissionRecipients = userPreferenceStore.statementsMatching(findUserPermissionRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedAppPermissionRecipients = appPolicyStore.statementsMatching(findAppPermissionRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
                                         
-                                        resultRecipient = specifiedAppRecipients.map(a => specifiedUserRecipients.indexOf(a) > -1).every(Boolean)
-                                        if(!resultRecipient){
+                                        resultPermissionRecipient = specifiedAppPermissionRecipients.map(a => specifiedUserPermissionRecipients.indexOf(a) > -1).every(Boolean)
+                                        if(!resultPermissionRecipient){
                                             console.log("Access Denied at recipient")
                                         }
                                     }
 
-                                    console.log(resultRecipient)
-                                    if(resultRecipient == null){
-                                        if(resultTarget && resultActions && resultPurpose){
+                                    console.log(resultPermissionRecipient)
+                                    if(resultPermissionRecipient == null){
+                                        if(resultPermissionTarget && resultPermissionActions && resultPermissionPurpose){
                                             // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
                                             document.getElementById("result").innerText = 'Access authorized';
                                             document.getElementById("result").style.color = 'green';
@@ -208,7 +213,7 @@ function getTest() {
                                             console.log('App permission ' + (i+1) + ' does not match user preference permission ' + (j+1))
                                         }
                                     } else {
-                                        if(resultTarget && resultActions && resultPurpose && resultRecipient){
+                                        if(resultPermissionTarget && resultPermissionActions && resultPermissionPurpose && resultPermissionRecipient){
                                             // result.value = 'App permission ' + (i+1) + ' matches user preference permission ' + (j+1);
                                             document.getElementById("result").innerText = 'Access authorized';
                                             document.getElementById("result").style.color = 'green';
@@ -221,7 +226,135 @@ function getTest() {
                                     }
                                 }
                     
-                                console.log('test_2')
+                                for (var k=0; k<userProhibitions.length;k++){
+                                    userProhibition = userProhibitions[k]
+            
+                                    /* Match personal data target */
+                                    var userProhibitionTargets = userPreferenceStore.statementsMatching(userProhibition.object, ODRL('target'), undefined).map(a => a.object.value)
+                                    var appPermissionTargets = appPolicyStore.statementsMatching(appPermission.object, ODRL('target'), undefined).map(a => a.object.value)
+                                    
+                                    var getUserTargetsProhibitionSubclasses = userPreferenceStore.statementsMatching(userProhibition.object, ODRL('target'), undefined)
+                                    for (var t=0; t<getUserTargetsProhibitionSubclasses.length;t++) {
+                                        subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserTargetsProhibitionSubclasses[t].object).map(a => a.subject.value)
+                                        userProhibitionTargets.push(subclasses)
+                                    }
+    
+                                    resultProhibitionTarget = appPermissionTargets.map(a => userProhibitionTargets.flat().indexOf(a) > -1).every(Boolean)
+                                    if(resultProhibitionTarget){
+                                        console.log("User prohibits target data")
+                                    }                                    
+            
+                                    /* Match processing actions */
+                                    var userProhibitionActions = userPreferenceStore.statementsMatching(userProhibition.object, ODRL('action'), undefined).map(a => a.object.value)
+                                    var appPermissionActions = appPolicyStore.statementsMatching(appPermission.object, ODRL('action'), undefined).map(a => a.object.value)
+                                    var mappedAppPermissionActions = appPermissionActions.map(
+                                        function(a){
+                                            if(aclReadMapping.indexOf(a) > -1){
+                                                return a.replace(a, ACL('Read').value);
+                                            } else {
+                                                return a;
+                                            }
+                                        }
+                                    );
+                                    mappedAppPermissionActions = mappedAppPermissionActions.map(
+                                        function(a){
+                                            if(aclWriteMapping.indexOf(a) > -1){
+                                                return a.replace(a, ACL('Write').value);
+                                            } else {
+                                                return a;
+                                            }
+                                        }
+                                    );
+                                    resultProhibitionActions = mappedAppPermissionActions.map(a => userProhibitionActions.indexOf(a) > -1).every(Boolean)
+                                    if(resultProhibitionActions){
+                                        console.log("User prohibits action operations")
+                                    }
+            
+                                    /* Match purpose constraint */
+                                    var userProhibitionConstraint = userPreferenceStore.statementsMatching(userProhibition.object, ODRL('constraint'), undefined)
+                                    var appPermissionConstraint = appPolicyStore.statementsMatching(appPermission.object, ODRL('constraint'), undefined)
+                                    
+                                    var userProhibitionPurpose = userPreferenceStore.statementsMatching(userProhibitionConstraint.object, undefined, DPV('Purpose'))
+                                    var appPermissionPurpose = appPolicyStore.statementsMatching(appPermissionConstraint.object, undefined, DPV('Purpose'))
+                                    
+                                    findUserProhibitionPurposeConstraint = []
+                                    findAppPermissionPurposeConstraint = []
+                                    resultProhibitionPurpose = false
+                                    if(userProhibitionPurpose.length > 0 && appPermissionPurpose.length > 0){
+                                        for (var c=0; c<userProhibitionConstraint.length;c++) {
+                                            if(userProhibitionConstraint[c].object.value == userProhibitionPurpose[0].subject.value){
+                                                findUserProhibitionPurposeConstraint.push(userProhibitionConstraint[c])
+                                            }
+                                        }
+            
+                                        for (var c=0; c<appPermissionConstraint.length;c++) {
+                                            if(appPermissionConstraint[c].object.value == appPermissionPurpose[0].subject.value){
+                                                findAppPermissionPurposeConstraint.push(appPermissionConstraint[c])
+                                            }
+                                        }
+            
+                                        var specifiedUserProhibitionPurposes = userPreferenceStore.statementsMatching(findUserProhibitionPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedAppPermissionPurposes = appPolicyStore.statementsMatching(findAppPermissionPurposeConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        
+                                        var getUserProhibitionPurposesSubclasses = userPreferenceStore.statementsMatching(findUserProhibitionPurposeConstraint[0].object, ODRL('rightOperand'), undefined)
+                                        for (var p=0; p<getUserProhibitionPurposesSubclasses.length;p++) {
+                                            subclasses = dpvStore.statementsMatching(undefined, RDFS('subClassOf'), getUserProhibitionPurposesSubclasses[p].object).map(a => a.subject.value)
+                                            specifiedUserProhibitionPurposes.push(subclasses)
+                                        }
+    
+                                        resultProhibitionPurpose = specifiedAppPermissionPurposes.map(a => specifiedUserProhibitionPurposes.flat().indexOf(a) > -1).every(Boolean)
+                                        if(resultProhibitionPurpose){
+                                            console.log("User prohibits specified purposes")
+                                        }
+                                    }
+            
+                                    /* Match recipient constraint */
+                                    var userProhibitionRecipient = userPreferenceStore.statementsMatching(userProhibitionConstraint.object, undefined, DPV('Recipient'))
+                                    var appPermissionRecipient = appPolicyStore.statementsMatching(appPermissionConstraint.object, undefined, DPV('Recipient'))
+
+                                    findUserProhibitionRecipientConstraint = []
+                                    findAppPermissionRecipientConstraint = []
+                                    resultProhibitionRecipient = null
+                                    if(userProhibitionRecipient.length > 0 && appPermissionRecipient.length > 0){
+                                        for (var c=0; c<userProhibitionConstraint.length;c++) {
+                                            if(userProhibitionConstraint[c].object.value == userProhibitionRecipient[0].subject.value){
+                                                findUserProhibitionRecipientConstraint.push(userProhibitionConstraint[c])
+                                            }
+                                        }
+                                        
+                                        for (var c=0; c<appPermissionConstraint.length;c++) {
+                                            if(appPermissionConstraint[c].object.value == appPermissionRecipient[0].subject.value){
+                                                findAppPermissionRecipientConstraint.push(appPermissionConstraint[c])
+                                            }
+                                        }
+
+                                        var specifiedUserProhibitionRecipients = userPreferenceStore.statementsMatching(findUserProhibitionRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        var specifiedAppPermissionRecipients = appPolicyStore.statementsMatching(findAppPermissionRecipientConstraint[0].object, ODRL('rightOperand'), undefined).map(a => a.object.value)
+                                        
+                                        resultProhibitionRecipient = specifiedAppPermissionRecipients.map(a => specifiedUserProhibitionRecipients.indexOf(a) > -1).every(Boolean)
+                                        if(resultProhibitionRecipient){
+                                            console.log("User prohibits specified recipients")
+                                        }
+                                    }
+                                    
+                                    if(resultProhibitionRecipient == null){
+                                        if(resultProhibitionTarget && resultProhibitionActions && resultProhibitionPurpose){
+                                            document.getElementById("result").innerText = 'Access denied';
+                                            document.getElementById("result").style.color = 'red';
+                                        } else {
+                                            document.getElementById("result").innerText = 'Access authorized';
+                                            document.getElementById("result").style.color = 'green';
+                                        }
+                                    } else {
+                                        if(resultProhibitionTarget && resultProhibitionActions && resultProhibitionPurpose && resultProhibitionRecipient){
+                                            document.getElementById("result").innerText = 'Access denied';
+                                            document.getElementById("result").style.color = 'red';
+                                        } else {
+                                            document.getElementById("result").innerText = 'Access authorized';
+                                            document.getElementById("result").style.color = 'green';
+                                        }
+                                    }
+                                }
                             }
     
                         }
