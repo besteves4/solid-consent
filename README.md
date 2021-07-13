@@ -1,7 +1,8 @@
-# semantics2021-webpage
+# Webpage for the Consent Workshop 2021
 
-Webpage for the "Creating an ODRL Profile for Expressing Granular Access Control Policies in Solid" paper submitted to SEMANTiCS 2021
+Webpage for the "ODRL Profile for Expressing Consent through Granular Access Control Policies in Solid" paper submitted to the 1st International Workshop on
+Consent Management in Online Services, Networks and Things (COnSeNT 2021)
 
-Keywords: Solid · decentralized datastores · access control · data protection · privacy · ODRL · DPV · GDPR · regulatory compliance
+Keywords: access control · consent · data protection · decentralized datastores · privacy · DPV · GDPR · regulatory compliance
 
-See the [conference](https://2021-eu.semantics.cc/)
+See the [conference](https://privacy-as-expected.org/consent2021/)
