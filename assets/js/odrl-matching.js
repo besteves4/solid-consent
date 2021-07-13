@@ -58,7 +58,7 @@ function getTest() {
     var appPolicyFetcher = new $rdf.Fetcher(appPolicyStore, timeout)
     var appPermissions = null
     
-    var dpvUri = 'https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/dpv.ttl'
+    var dpvUri = 'https://protect.oeg.fi.upm.es/solid-consent/assets/rdf/dpv.ttl'
     var dpvStore = $rdf.graph()
     var dpvFetcher = new $rdf.Fetcher(dpvStore, timeout)
 

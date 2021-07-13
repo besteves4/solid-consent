@@ -392,13 +392,17 @@
 							<span class="prefix">@prefix</span> rdf: <span class="url">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#></span> .<br>
 							<span class="prefix">@prefix</span> rdfs <span class="url">&lt;http://www.w3.org/2000/01/rdf-schema#></span> .<br>
 							<span class="prefix">@prefix</span> owl: <span class="url">&lt;http://www.w3.org/2002/07/owl#></span> .<br>
+							<span class="prefix">@prefix</span> dct: <span class="url">&lt;http://purl.org/dc/terms/></span> .<br>
+							<span class="prefix">@prefix</span> ns1: <span class="url">&lt;http://purl.org/vocab/vann/></span> .<br>
+							<span class="prefix">@prefix</span> xsd: <span class="url">&lt;http://www.w3.org/2001/XMLSchema#></span> .<br>
+							<span class="prefix">@prefix</span> xsd: <span class="url">&lt;http://www.w3.org/2001/XMLSchema#></span> .<br>
 							<span class="prefix">@prefix</span> odrl: <span class="url">&lt;http://www.w3.org/ns/odrl/2/></span> .<br>
 							<span class="prefix">@prefix</span> dpv: <span class="url">&lt;http://www.w3.org/ns/dpv#></span> .<br>
 							<span class="prefix">@prefix</span> acl: <span class="url">&lt;http://www.w3.org/ns/auth/acl#></span> .<br><br>
 
-							<span class="prefix">@base</span> <span class="url">&lt;https://example.com/odrl-ac></span> .<br><br>
+							<span class="prefix">@prefix</span> oac: <span class="url">&lt;https://protect.oeg.fi.upm.es/odrl-access-control-profile/oac></span> .<br><br>
 
-							odrl-ac:<br>
+							oac:<br>
 							<span class="tab">a owl:Ontology ;</span><br>
 							<span class="tab">rdfs:label <span class="string">"ODRL access control policies profile"@en</span> .</span><br><br>
 
@@ -545,8 +549,8 @@
 						</a>
 					  
 						<div class="dropdown-menu" aria-labelledby="appMenuLink">
-						  	<a class="dropdown-item" onclick="getAppPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/app-policy-ex-1.ttl')">App policy 1</a>
-							<a class="dropdown-item" onclick="getAppPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/app-policy-ex-2.ttl')">App policy 2</a>
+						  	<a class="dropdown-item" onclick="getAppPolicyURL('https://protect.oeg.fi.upm.es/solid-consent/assets/rdf/app-policy-ex-1.ttl')">App policy 1</a>
+							<a class="dropdown-item" onclick="getAppPolicyURL('https://protect.oeg.fi.upm.es/solid-consent/assets/rdf/app-policy-ex-2.ttl')">App policy 2</a>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -596,8 +600,8 @@
 						</a>
 					  
 						<div class="dropdown-menu" aria-labelledby="appMenuLink2">
-						  	<a class="dropdown-item" onclick="getUserPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/user-preference-ex-1.ttl')">User policy 1</a>
-							<a class="dropdown-item" onclick="getUserPolicyURL('https://protect.oeg.fi.upm.es/semantics2021/assets/rdf/user-preference-ex-2.ttl')">User policy 2</a>
+						  	<a class="dropdown-item" onclick="getUserPolicyURL('https://protect.oeg.fi.upm.es/solid-consent/assets/rdf/user-preference-ex-1.ttl')">User policy 1</a>
+							<a class="dropdown-item" onclick="getUserPolicyURL('https://protect.oeg.fi.upm.es/solid-consent/assets/rdf/user-preference-ex-2.ttl')">User policy 2</a>
 						</div>
 					</div>
 					<div class="col-md-6">
