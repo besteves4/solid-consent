@@ -1,19 +1,26 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cert: <http://www.w3.org/ns/auth/cert#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix dpv: <http://www.w3.org/ns/dpv#> .
-@prefix dpv-gdpr: <http://www.w3.org/ns/dpv-gdpr#> .
-@prefix odrl-ac: <https://example.com/odrl-ac> .
+@prefix acl:  <http://www.w3.org/ns/auth/acl#> .
+@prefix oac: <https://w3id.org/oac/> .
+
+@prefix : <http://example.com> .
 
 :app-2
-    a odrl:Policy ; 
+    a odrl:Policy ;
+    odrl:profile oac: ; 
     odrl:permission [
         a odrl:Permission ;
-        odrl:assignee <https://example-app-2.com> ;
-        odrl:target dpv:EmailAddress ;
-        odrl:action dpv:Use ;
+        odrl:assignee [
+            a oac:DataController ;
+            cert:key <https://example-app-2.com>
+        ] ;
+        odrl:target oac:EmailAddress ;
+        odrl:action oac:Use ;
         odrl:constraint [
-            odrl:leftOperand dpv:Purpose ;
+            odrl:leftOperand oac:Purpose ;
             odrl:operator odrl:isA ;
             odrl:rightOperand dpv:SellProductsToDataSubject
         ] 

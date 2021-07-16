@@ -1,24 +1,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cert: <http://www.w3.org/ns/auth/cert#> .
 @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix dpv: <http://www.w3.org/ns/dpv#> .
 @prefix acl:  <http://www.w3.org/ns/auth/acl#> .
-@prefix odrl-ac: <https://example.com/odrl-ac> .
+@prefix oac: <https://w3id.org/oac/> .
+
+@prefix : <http://example.com> .
 
 :ex-1
-    rdf:type odrl:Policy ; 
+    rdf:type odrl:Policy ;
+    odrl:profile oac: ; 
     odrl:permission [
         a odrl:Permission ;
-        odrl:assigner <https://beatriz.com/profile/card#me> ;
-        odrl:target dpv:Contact, dpv:Health ;
-        odrl:action acl:Read, acl:Write ;
+        odrl:assigner [
+            a oac:DataSubject ;
+            cert:key <https://anne.databox.me/profile/card#me>
+        ] ;
+        odrl:target oac:Contact, oac:Health ;
+        odrl:action oac:Read, oac:Write ;
         odrl:constraint [
-            odrl:leftOperand dpv:Purpose ;
+            odrl:leftOperand oac:Purpose ;
             odrl:operator odrl:isA ;
             odrl:rightOperand dpv:ResearchAndDevelopment
         ] ;
         odrl:constraint [
-            odrl:leftOperand dpv:Recipient ;
+            odrl:leftOperand oac:Recipient ;
             odrl:operator odrl:isA ;
             odrl:rightOperand dpv:ThirdParty
         ] 
