@@ -542,18 +542,22 @@
 							<div id="app1" style="display:none;" class="example-box">
 								:app-1 <br>
 								<span class="tab">a odrl:Policy ;</span><br>
+								<span class="tab">odrl:profile oac: ;</span><br>
     							<span class="tab">odrl:permission [</span><br>
 								<span class="tab"><span class="tab">a odrl:Permission ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:assignee &lt;https://example-app-1.com> ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:target dpv:EmailAddress ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:action dpv:Use, dpv:MakeAvailable ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assignee [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">a oac:DataController ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">cert:key &lt;https://example-app-1.com></span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target oac:EmailAddress ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action oac:Use, oac:MakeAvailable ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Purpose ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:AcademicResearch</span></span></span><br>
 								<span class="tab"><span class="tab">] ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand dpv:Recipient ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Recipient ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ThirdParty</span></span></span><br>
 								<span class="tab"><span class="tab">] </span></span><br>
@@ -562,13 +566,17 @@
 							<div id="app2" style="display:none;" class="example-box">
 								:app-2 <br>
 								<span class="tab">a odrl:Policy ;</span><br>
+								<span class="tab">odrl:profile oac: ;</span><br>
     							<span class="tab">odrl:permission [</span><br>
 								<span class="tab"><span class="tab">a odrl:Permission ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:assignee &lt;https://example-app-2.com> ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:target dpv:EmailAddress ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:action dpv:Use ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assignee [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">a oac:DataController ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">cert:key &lt;https://example-app-2.com></span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target oac:EmailAddress ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action oac:Use ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Purpose ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:SellProductsToDataSubject</span></span></span><br>
 								<span class="tab"><span class="tab">] </span></span><br>
@@ -593,18 +601,22 @@
 							<div id="user1" style="display:none;" class="example-box">
 								:user-1<br>
 								<span class="tab">a odrl:Policy ;</span><br>
+								<span class="tab">odrl:profile oac: ;</span><br>
 								<span class="tab">odrl:permission [</span><br>
 								<span class="tab"><span class="tab">a odrl:Permission ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:assigner &lt;https://beatriz.databox.me/profile/card#me> ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:target dpv:Contact, dpv:Health ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:action acl:Read, acl:Write ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assigner [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">a oac:DataSubject ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">cert:key &lt;https://anne.databox.me/profile/card#me></span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target oac:Contact, oac:Health ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action oac:Read, oac:Write ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">drl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Purpose ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ResearchAndDevelopment</span></span></span><br>
 								<span class="tab"><span class="tab">] ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">drl:leftOperand dpv:Recipient ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Recipient ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:ThirdParty</span></span></span><br>
 								<span class="tab"><span class="tab">]</span></span><br>
@@ -613,13 +625,17 @@
 							<div id="user2" style="display:none;" class="example-box">
 								:user-2<br>
 								<span class="tab">a odrl:Policy ;</span><br>
+								<span class="tab">odrl:profile oac: ;</span><br>
 								<span class="tab">odrl:prohibition [</span><br>
 								<span class="tab"><span class="tab">a odrl:Prohibition ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:assigner &lt;https://beatriz.databox.me/profile/card#me> ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:target dpv:Contact ;</span></span><br>
-								<span class="tab"><span class="tab">odrl:action acl:Read, acl:Write ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:assigner [</span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">a oac:DataSubject ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">cert:key &lt;https://anne.databox.me/profile/card#me></span></span></span><br>
+								<span class="tab"><span class="tab">] ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:target oac:Contact ;</span></span><br>
+								<span class="tab"><span class="tab">odrl:action oac:Read, oac:Write ;</span></span><br>
 								<span class="tab"><span class="tab">odrl:constraint [</span></span><br>
-								<span class="tab"><span class="tab"><span class="tab">drl:leftOperand dpv:Purpose ;</span></span></span><br>
+								<span class="tab"><span class="tab"><span class="tab">odrl:leftOperand oac:Purpose ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:operator odrl:isA ;</span></span></span><br>
 								<span class="tab"><span class="tab"><span class="tab">odrl:rightOperand dpv:SellProductsToDataSubject</span></span></span><br>
 								<span class="tab"><span class="tab">]</span></span><br>

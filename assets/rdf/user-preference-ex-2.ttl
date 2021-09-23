@@ -8,7 +8,7 @@
 
 @prefix : <http://example.com> .
 
-:ex-2
+:user-2
     a odrl:Policy ;
     odrl:profile oac: ; 
     odrl:prohibition [
