@@ -23,10 +23,5 @@
             odrl:leftOperand oac:Purpose ;
             odrl:operator odrl:isA ;
             odrl:rightOperand dpv:ResearchAndDevelopment
-        ] ;
-        odrl:constraint [
-            odrl:leftOperand oac:Recipient ;
-            odrl:operator odrl:isA ;
-            odrl:rightOperand dpv:ThirdParty
-        ] 
+        ]
     ] .
